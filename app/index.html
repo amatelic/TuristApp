@@ -1,0 +1,133 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>test1</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+        <!-- build:js scripts/vendor/modernizr.js -->
+        <script src="bower_components/modernizr/modernizr.js"></script>
+    <script type="text/javascript"  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJ2MirKIaBXGNzwUphgiUc6CRMh4lJJC8&sensor=false">
+    // &sensor=false&libraries=weather"
+   </script>
+    <style>
+
+        #map{
+            height:  300px;
+            background: red;
+        }
+        #map-canvas{
+            width: 100%;
+            height: 300px;
+        }
+    </style>
+        <!-- endbuild -->
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+        <div class="container">
+            <div class="header">
+                <ul class="nav nav-pills pull-right">
+                    <li class="active"><a href="#">aaome</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <h3 class="text-muted">test1</h3>
+            </div>
+            <div class="footer">
+                <div class="col-xs-12 col-md-5 col-lg-5 plan"></div>
+                <div class="col-xs-12 col-md-5 col-lg-5 map" id="map">
+                </div>
+            </div>
+
+        </div>
+        <!-- plan template -->
+        <script type="text/template" id="artist-list-template">
+            <h3>Start destination</h3>
+            <select multiple  id="start" class="form-control start">
+              <% _.each(locations, function( location ) { %>  
+                  <option value="<%= location.name+'-'+location.lat+'-'+location.lon %>"><%= location.name %></option> 
+                <% }); %>
+            </select>
+            <h3>End destination</h3>
+            <select disabled multiple id="end" class="form-control end">
+              <% _.each(locations, function( location ) { %>  
+                  <option value="<%= location.name+'-'+location.lat+'-'+location.lon %>"><%= location.name %></option> 
+                <% }); %>
+            </select >
+            <h3>Number of people:</h3>
+            <input type="number" value="<%= peopleNumber %>"  min="0" max="50"class="form-control" id="number_of_people">
+            <h3>Transport:</h3>
+            <input type="text" value="<%= transport %>"  id="transport" class="form-control" disabled>
+            <button type="button" id="restarounts"class="btn btn-default btn-lg"   data-toggle="modal" data-target="#cityModel">
+                <span class="glyphicon glyphicon-glass"  ></span> 
+            </button>
+            <button type="button" id="hotels"class="btn btn-default btn-lg"  data-toggle="modal" data-target="#cityModel">
+                <span class="glyphicon glyphicon-home"  ></span> 
+            </button>
+            <button type="button" id="escorsions"class="btn btn-default btn-lg"  data-toggle="modal" data-target="#cityModel">
+                <span class="glyphicon glyphicon-camera" 
+                 ></span> 
+            </button>
+        </script>
+
+        <!-- map template -->
+        <script type="text/template" id="google-map">
+                <div id="map-canvas"></div>
+        </script>
+        <div class="modal fade" id="cityModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">All citys</h4>
+              </div>
+              <div class="modal-body">
+                     <select multiple  id="citys" class="form-control start">
+                        <option value="cityhotel">cityhotel</option>   
+                        <option value="unionhotel">unionhotel</option>   
+                     </select>
+                     
+              </div>
+              <div class="bodyCity">
+                    
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- build:js scripts/main.js -->
+        <script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>
+        <!-- endbuild -->
+        <script src="bower_components/jquery/jquery.js"></script>
+        <script>
+            var event = $("select#citys"),
+            body = $(".bodyCity");
+                event.on('click', function (value) {
+                    var value = value.currentTarget.value;
+                    if (value !== "") {
+                        var city = window.ljubljana.hotels[value];
+                        body.append("<p>",{text:"bla"});
+
+                    };
+                })
+        </script>
+</body>
+</html>

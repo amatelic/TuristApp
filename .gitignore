@@ -1,36 +1,42 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
+# Created by http://gitignore.io
 
-# Folder config file
-Desktop.ini
+### Node ###
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
+pids
+logs
+results
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
+npm-debug.log
+node_modules
 
-# =========================
-# Operating System Files
-# =========================
+### Bower ###
+app/bower_components
 
-# OSX
-# =========================
 
-.DS_Store
-.AppleDouble
-.LSOverride
+### Linux ###
+.*
+!.gitignore
+!.git*
+!.editorconfig
+!.jshintrc
+!.npmignore
+!.travis.yml
+*~
 
-# Icon must ends with two \r.
-Icon
 
-# Thumbnails
-._*
+### SASS ###
+### SASS Ignores - "Sassy CSS" http://sass-lang.com/
+*.sass-cache
 
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
+
+### Yeoman ###
+dist
+test/temp
